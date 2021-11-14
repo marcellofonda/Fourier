@@ -4,7 +4,7 @@ using CUDA
 CUDA.allowscalar(false)
 import Base.+
 import Base.*
-
+default(linealpha=.5)
 # PARAMETRI PERSONALIZZABILI
 
 # Quanti termini della serie di Fourier si vogliono calcolare
@@ -102,7 +102,7 @@ println("Calcolo l'animazione...")
     scatter([0+0im],aspect_ratio=1, legend=false);
 
     if mostra_originale
-        plot!(Array{ComplexF64}(coord));
+        plot!(Array(coord), linealpha=.8);
     end
 
     # Per ogni successiva approssimazione, disegna il cerchio (epiciclo)
@@ -121,7 +121,7 @@ println("Calcolo l'animazione...")
     # Aggiungi alla traiettoria l'estremo finale dell'ultimo raggio
     push!(percorso, f[grado+1](tempo))
     # Disegna la traiettoria tracciata finora
-    plot!(percorso);
+    plot!(percorso, linealpha=1.);
 end every (skipplots+1)
 println("Animazione calcolata con successo nel tempo sopra specificato, procedo a salvare su GIF...")
 # Salva l'animazione su GIF, con lo stesso nome del file da cui vengono le
