@@ -22,6 +22,8 @@ const skip = 5
 const skipplots = 0
 #Il numero di frame al secondo del risultante GIF
 const fps = 30
+# Vuoi vedere il disegno originale in sfondo?
+const mostra_originale=false
 
 #FUNZIONI
 
@@ -99,8 +101,9 @@ println("Calcolo l'animazione...")
     # Disegna l'origine
     scatter([0+0im],aspect_ratio=1, legend=false);
 
-    # Commentare se non si vuole vedere il disegno originale
-    #plot!(Array{ComplexF64}(coord));
+    if mostra_originale
+        plot!(Array{ComplexF64}(coord));
+    end
 
     # Per ogni successiva approssimazione, disegna il cerchio (epiciclo)
     # su cui ruota l'ultimo raggio e il raggio stesso. Il risultato è
