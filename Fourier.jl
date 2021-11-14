@@ -20,7 +20,8 @@ const skip = 5
 # Quanti frame saltare nella creazione dell'Animazione
 # (influenza la "scattosità" dell'animazione)
 const skipplots = 0
-
+#Il numero di frame al secondo del risultante GIF
+const fps = 30
 
 #FUNZIONI
 
@@ -122,5 +123,5 @@ end every (skipplots+1)
 println("Animazione calcolata con successo nel tempo sopra specificato, procedo a salvare su GIF...")
 # Salva l'animazione su GIF, con lo stesso nome del file da cui vengono le
 # coordinate
-gif(anim, "$path.gif", fps=30)
+gif(anim, "$path.gif", fps=fps)
 println("GIF salvata con successo!")
