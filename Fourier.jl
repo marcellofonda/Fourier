@@ -73,14 +73,14 @@ n=[((-1)^i)*(i÷2) for i in 1:grado]
 # La "base" di Fourier: un insieme di funzioni del tipo e^{πkix/L}/L, con
 # k che varia dentro n. Notare che la "base" è ortonormale per
 # ⟨f,g⟩ := ∫fg
-base= [ x -> exp(π * im * k * x / L)/L for k in n]
+base= [ x -> exp(π * im * k * x / L)/sqrt(2L) for k in n]
 
 # Calcola i coefficienti dell'espansione usando il "prodotto scalare"
 # α_k = ⟨e_k,f⟩
 # NOTA teorica: Questo non è un prodotto scalare in senso complesso,
 # perché è simmetrico e non hermitiano. Bisognerebbe cambiare il segno
 # dell'esponenziale, ma siccome ∀ n, consideriamo anche -n, un po' ce
-# ne freghiamo e funziona comunque.
+# ne freghiamo e funziona comunque. Verrà una roba che gira nel verso opposto.
 α=[integra(-L, L, h.(t) .* coord) for h in base]
 
 println("Coefficienti ottenuti con successo!")
